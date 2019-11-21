@@ -3,7 +3,8 @@ void ShellSort(int arr[], int N){
   int Tmp;
   
   
-  for(Increament = N / 2; Increament > 0; Increament /= 2){
+  for(Increament = N / 2; Increament > 0; Increament /= 2)
+  {
     for( i = Increament; i < N; i++)
     {
       Tmp = arr[i];
@@ -16,4 +17,5 @@ void ShellSort(int arr[], int N){
       }
       arr[j] = Tmp;
     }
+  }
 }
