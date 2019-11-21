@@ -7,7 +7,7 @@ int *generateRandomArray(int arraysize, int rangeLeft, int rangeRight){
   
   for(int i = 0; i < n; i++)
   {
-    arr[i] = rand() % (rangeRight - rangeLeft  + 1) + rangeLeft;
+    arr[i] = rand() % (rangeRight - rangeLeft  + 1) + rangeLeft;  //保证随机数在指定区间内
   }
   return arr;
 }
