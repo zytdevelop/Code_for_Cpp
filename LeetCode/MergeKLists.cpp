@@ -1,4 +1,4 @@
-
+/*LeetCode No.23. Merge k Sorted Lists*/
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -12,17 +12,40 @@
 
 
 ListNode* mergeKLists(vector<ListNode*>& lists) {
-    if(lists.size() == 0)
-        return nullptr;
-    if(lists.size() == 1)
-        return lists[0];
-    ListNode *p = lists[0];
-    for(int i = 1; i < lists.size(); i++)
-    {
-        p = mergeTwoLists(p,lists[i]);
-    }
-    return p;
+  //改良合并的方式: 与归并排序的思路一致,两路归并
+  if(lists.empty())
+    return nullptr;
+  int n = lists.size();
+  while(n > 1)
+  {
+    int k = (n + 1) / 2;
+    for(int i = 0; i < n/2; ++i)
+      lists[i] = mergeTwoLists(lists[i],lists[i+k]);
+    n = k;
+  }
+  return lists[0];
+  
+  /***使用暴力循环两两合并数组的方法,时间复杂度很高
+  if(lists.size() == 0)
+      return nullptr;
+  if(lists.size() == 1)
+      return lists[0];
+  ListNode *p = lists[0];
+  for(int i = 1; i < lists.size(); i++)
+  {
+      p = mergeTwoLists(p,lists[i]);
+  }
+  return p;
+    */
+  
+  
+
 }
+
+
+
+
+
 ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
     if(l1 == nullptr||l2 == nullptr)
     {
